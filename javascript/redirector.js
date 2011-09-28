@@ -1,32 +1,30 @@
 jQuery(function(){
-	current_redirection = jQuery('#redirector_type_set').val();
-	if (current_redirection == '' || current_redirection == 'redirect_child')
-		redirecttoggle('#redirect_settings_child');
-	else if (current_redirection == 'redirect_url')
-		redirecttoggle('#redirect_settings_url');
-	else
-		redirecttoggle('#redirect_settings_page');
+	
+	function switchRedirectType(){
+		var redirectType = jQuery('input[name=redirect_type]:checked').val();
+		switch ( redirectType ) {
+			case 'none' :
+				jQuery('#redirect_settings_page').slideUp('fast');
+				jQuery('#redirect_settings_url').slideUp('fast');
+				break;
+			case 'redirect_page' :
+				jQuery('#redirect_settings_page').slideDown('fast');
+				jQuery('#redirect_settings_url').slideUp('fast');
+				break;
+			case 'redirect_url' :
+				jQuery('#redirect_settings_page').slideUp('fast');
+				jQuery('#redirect_settings_url').slideDown('fast');
+				break;
+			case 'redirect_child' :
+				jQuery('#redirect_settings_page').slideUp('fast');
+				jQuery('#redirect_settings_url').slideUp('fast');
+				break;
+		}
+	}
+	
+	jQuery('input[name=redirect_type]').change(function(){
+		switchRedirectType();
+	});
+	
+	switchRedirectType();
 });
-function redirecttoggle(element) {
-	jQuery(element).hide();
-	if (element == 'none')
-	{
-		jQuery('#redirect_settings_page').hide('fast');
-		jQuery('#redirect_settings_url').hide('fast');
-	}
-	else if (element == '#redirect_settings_page')
-	{
-		jQuery('#redirect_settings_page').show('slow');
-		jQuery('#redirect_settings_url').hide();	
-	}
-	else if (element == '#redirect_settings_url')
-	{
-		jQuery('#redirect_settings_page').hide();
-		jQuery('#redirect_settings_url').show('slow');	
-	}
-	else if (element == '#redirect_settings_child')
-	{
-		jQuery('#redirect_settings_page').hide('fast');
-		jQuery('#redirect_settings_url').hide('fast');		
-	}
-}

@@ -3,7 +3,7 @@
 Plugin Name: Redirector
 Plugin URL: http://www.horttcore.de/wordpress/redirector
 Description: Redirect any page to an internal or external URL
-Version: 2
+Version: 2.0.1
 Author: Ralf Hortt
 Author URL: http://www.horttcore.de/
 */
@@ -49,7 +49,7 @@ class Redirector {
 	 *
 	 * @author Ralf Hortt
 	 **/
-	function Redirector()
+	function __construct()
 	{
 		if ( is_admin() ) :
 			add_action( 'admin_init', array(&$this, 'admin_init') );						
@@ -137,20 +137,18 @@ class Redirector {
 		$redirect_page = (is_numeric($redirect)) ? 'checked="checked"' : '';
 		$redirect_id = (is_numeric($redirect)) ? $redirect : '';
 		?>
-		
-		<h4><?php _e('Redirect Type', RH_RD_TEXTDOMAIN); ?></h4>
-		
+
 		<div id="redirect_type">
-			<input type="radio" id="no_redirection" name="redirect_type" value="none" onChange="redirecttoggle('none')" checked="checked"> <label for="no_redirection"><?php _e('None', RH_RD_TEXTDOMAIN); ?></label> <span>|</span> 
-			<input type="radio" id="redirect_page" name="redirect_type" value="redirect_page" onChange="redirecttoggle('#redirect_settings_page')" <?php echo $redirect_page ?>> <label for="redirect_page"><?php _e('Redirect to a page', RH_RD_TEXTDOMAIN); ?></label> <span>|</span> 
-			<input type="radio" id="redirect_url" name="redirect_type" value="redirect_url" onChange="redirecttoggle('#redirect_settings_url')" <?php echo $cecked_url ?>> <label for="redirect_url"><?php _e('Redirect to a URL', RH_RD_TEXTDOMAIN); ?></label> <span>|</span> 
-			<input type="radio" id="redirect_child" name="redirect_type" value="redirect_child" onChange="redirecttoggle('#redirect_settings_child')" <?php echo $checked_child ?>> <label for="redirect_child"><?php _e('Redirect to the first child page', RH_RD_TEXTDOMAIN); ?></label>
+			<input type="radio" id="no_redirection" name="redirect_type" value="none" checked="checked"> <label for="no_redirection"><?php _e('None', RH_RD_TEXTDOMAIN); ?></label> <span>|</span> 
+			<input type="radio" id="redirect_page" name="redirect_type" value="redirect_page" <?php echo $redirect_page ?>> <label for="redirect_page"><?php _e('Redirect to a page', RH_RD_TEXTDOMAIN); ?></label> <span>|</span> 
+			<input type="radio" id="redirect_url" name="redirect_type" value="redirect_url" <?php echo $cecked_url ?>> <label for="redirect_url"><?php _e('Redirect to a URL', RH_RD_TEXTDOMAIN); ?></label> <span>|</span> 
+			<input type="radio" id="redirect_child" name="redirect_type" value="redirect_child" <?php echo $checked_child ?>> <label for="redirect_child"><?php _e('Redirect to the first child page', RH_RD_TEXTDOMAIN); ?></label>
 			<!-- <input type="radio" id="redirect_random" name="redirect_type" value="redirect_random" onChange="redirecttoggle('#redirect_settings_random')" <?php echo $checked_random ?>> <label for="redirect_random"><?php _e('Redirect to a random child page', RH_RD_TEXTDOMAIN); ?></label> -->
 			<input type="hidden" id="redirector_type_set" name="redirector_type_set" value="<?php echo $redirect; ?>" />
 		</div>
 
 		<div class="redirect_settings">
-			<p class="redirect_settings" id="redirect_settings_page">
+			<p class="redirect_settings" id="redirect_settings_page" style="display: none;">
 				<label for="redirector"><?php _e( 'Redirect to:',RH_RD_TEXTDOMAIN ); ?></label><br />
 				<select id="redirector" name="redirector">
 					<option value=""><?php _e( 'No redirection',RH_RD_TEXTDOMAIN ); ?></option>
@@ -159,7 +157,7 @@ class Redirector {
 
 			</p>
 
-			<p class="redirect_settings" id="redirect_settings_url">
+			<p class="redirect_settings" id="redirect_settings_url" style="display: none;">
 				<label for="redirector_url"><?php _e('URL:', 'redirector'); ?></label><br />
 				<input id="redirector_url" name="redirector_url" value="<?php echo $redirect_url; ?>" type="text" size="35" />
 			</p>
@@ -176,7 +174,7 @@ class Redirector {
 	 *
 	 * @author Ralf Hortt
 	 **/
-	function save_post()
+	function save_post( $post_id )
 	{
 		// Redirect to a WordPress page
 		if ($_POST['redirect_type'] == 'redirect_page' && is_numeric($_POST['redirector'])) :
@@ -194,10 +192,10 @@ class Redirector {
 
 		// Save as a meta_key value
 		if ($redirect_to) :
-			update_post_meta($_POST['ID'], '_redirector', $redirect_to);
+			update_post_meta( $post_id, '_redirector', $redirect_to );
 		// Delete if it isn't set
 		else :
-			delete_post_meta($_POST['ID'], '_redirector');
+			delete_post_meta( $post_id, '_redirector' );
 		endif;
 	}
 	

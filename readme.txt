@@ -3,8 +3,8 @@ Contributors: Horttcore
 Donate link: http://www.horttcore.de
 Tags: redirect, page
 Requires at least: 2.6
-Tested up to: 2.7.1
-Stable tag: 1.1
+Tested up to: 3.3
+Stable tag: 2.0.1
 
 Redirect a page to an URL 
 
@@ -31,8 +31,14 @@ You have to save it once to get access to the redirecor settings. Sorry for that
 
 == Changelog ==
 
+2.0.1
+ * Bump tested up to 3.3
+ * JS rewritten
+
+2.0
+ * Complete rewritten
+
 1.1
 * Proper multilanguage support
 * CSS moved to redirector.css
 * JS moved to redirector.js
-*  
