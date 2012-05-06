@@ -1,0 +1,64 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Redirector v1.0.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2012-05-06 20:14-0300\n"
+"Last-Translator: admin <an@horttcore.de>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#@ redirector
+#: redirector.php:84
+msgid "Redirect"
+msgstr "Redirecionar"
+
+#@ redirector
+#: redirector.php:195
+msgid "Redirect to:"
+msgstr "Redirecionar para:"
+
+#@ redirector
+#: redirector.php:197
+msgid "No redirection"
+msgstr "Não Redirecionar"
+
+#@ redirector
+#: redirector.php:186
+msgid "None"
+msgstr "Nenhum"
+
+#@ redirector
+#: redirector.php:203
+msgid "URL:"
+msgstr "URL:"
+
+#@ redirector
+#: redirector.php:187
+msgid "Redirect to Page"
+msgstr "Redirecionar para página"
+
+#@ redirector
+#: redirector.php:188
+msgid "Redirect to Website"
+msgstr "Redirecionar para o website"
+
+#@ redirector
+#: redirector.php:189
+msgid "Redirect to First Child"
+msgstr "Redirecionar para página filho"
+
+#@ redirector
+#: redirector.php:190
+msgid "Redirect to HTTPS"
+msgstr "Redirecionar para HTTPS"
+
