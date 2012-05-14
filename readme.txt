@@ -12,6 +12,9 @@ Redirect a page to an URL
 
 With this Plugin you can redirect a page in your WordPress installation to any other URL, to a page in your WordPress installation or to the first child page.
 
+= Support =
+https://github.com/Horttcore/redirector
+
 == Installation ==
 
 * Put the plugin file in your plugin directory and activate it in your WP backend.
