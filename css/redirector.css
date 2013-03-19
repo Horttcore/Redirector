@@ -1,18 +1,3 @@
-#side-sortables #redirect_type input {
-	clear: left;
-	float: left;
-	margin: 0 5px 5px 0;
-}
-#side-sortables #redirect_type label {
-	float: left;
-}
-#side-sortables #redirect_type span {
+#redirect_settings_page, #redirect_settings_url {
 	display: none;
 }
-#side-sortables .redirect_settings {
-	clear: both;
-}
-#side-sortables #redirector_url {
-	width: 100%;
-}
-

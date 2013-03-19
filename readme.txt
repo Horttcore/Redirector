@@ -2,25 +2,28 @@
 Contributors: Horttcore
 Donate link: http://www.horttcore.de
 Tags: redirect, page
-Requires at least: 2.6
-Tested up to: 3.3
-Stable tag: 2.0.1
+Requires at least: 3.3
+Tested up to: 3.6
+Stable tag: 2.0.2
 
-Redirect a page to an URL 
+Redirect a page to an URL
 
 == Description ==
 
-With this Plugin you can redirect a page in your WordPress installation to any other URL, to a page in your WordPress installation or to the first child page.
+With this Plugin you can redirect a page in your WordPress installation to any other URL, to a page in your WordPress installation, to the first child page or to https.
 
-= Support =
-https://github.com/Horttcore/redirector
+!!! WARNING !!!
+Some users reported that during the update to 2.0 all redirects where deleted before,
+I removed the plugin uninstall hook for now and investigate this bug. I've updated the SVN without a version bump.
+
+Please do a backup of your db before you update the plugin!
 
 == Installation ==
 
-* Put the plugin file in your plugin directory and activate it in your WP backend.
-* Go to edit a page
-* Scroll down to 'Redirector' meta box
-* Select a WordPress page of you installation or enter a valid URL or select the 'first child page'
+*   Put the plugin file in your plugin directory and activate it in your WP backend.
+*   Go to edit a page
+*   Scroll down to 'Redirector' meta box
+*   Select a WordPress page of you installation or enter a valid URL or select the 'first child page'
 
 == Screenshots ==
 
@@ -32,16 +35,52 @@ https://github.com/Horttcore/redirector
 = There is no redirect box when I create a new page! =
 You have to save it once to get access to the redirecor settings. Sorry for that!
 
+= Are there any filters I can use? =
+Sure here is a list
+1. redirector_dropdown
+1. redirector_url
+1. redirector_redirect
+
+= Where can I get support or report bugs?=
+Please use the github to report bugs or add feature requests!
+https://github.com/Horttcore/Redirector
+
+= Are there any actions I can hook on? =
+Sure here is a list
+*   redirector_metabox_begin
+*   redirector_metabox_end
+*   redirector_types
+*   redirector_uninstall
+
+= I've found a bug, what to do? =
+*   Please give me a shout over github ( https://github.com/Horttcore/Redirector )
+
 == Changelog ==
 
+2.0.2
+*   Filter 'redirector_status' added
+*   Uninstall routine activated
+*   Code readability increased
+
 2.0.1
- * Bump tested up to 3.3
- * JS rewritten
+*	Enhancement: Cleanup
+*	Fix: Minor typos
+*	Fix: Metabox is displayed correctly on new post
 
 2.0
- * Complete rewritten
+*   Core function rewritten
+*   Updated JS/CSS
+*   Fully extendable with filters and actions
+*   Custom Post Type Support
+*   New redirect Method (HTTPS)
+*   Moved files into folders
+
+1.2
+*   Moved the code into class
 
 1.1
-* Proper multilanguage support
-* CSS moved to redirector.css
-* JS moved to redirector.js
+*   Proper multilanguage support
+*   CSS moved to redirector.css
+*   JS moved to redirector.js
+
+…
