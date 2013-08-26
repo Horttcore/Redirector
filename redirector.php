@@ -226,7 +226,7 @@ class Redirector {
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
 			return;
 
-		if ( !wp_verify_nonce( $_POST['redirector_nonce'], 'redirector' ) )
+		if ( !isset( $_POST['redirector_nonce'] ) || !wp_verify_nonce( $_POST['redirector_nonce'], 'redirector' ) )
 			return;
 
 		if ( $_POST['redirect_type'] ) :
@@ -265,7 +265,7 @@ class Redirector {
 				$redirect_url = $redirect;
 			endif;
 
-			if ( ( $redirect_url && 'https' != $redirect ) || ( 'https' == $redirect && 'HTTP/' == substr($_SERVER['SERVER_PROTOCOL'], 0, 5) ) ) :
+			if ( ( isset( $redirect_url ) && 'https' != $redirect ) || ( 'https' == $redirect && 'HTTP/' == substr($_SERVER['SERVER_PROTOCOL'], 0, 5) ) ) :
 
 				if ( $_SERVER['QUERY_STRING'] )
 					$redirect_url .= '?' . $_SERVER['QUERY_STRING'];
