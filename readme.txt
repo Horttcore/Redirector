@@ -41,16 +41,15 @@ Sure here is a list
 1. redirector_url
 1. redirector_redirect
 
-= Where can I get support or report bugs?=
-Please use the github to report bugs or add feature requests!
-https://github.com/Horttcore/Redirector
-
 = Are there any actions I can hook on? =
 Sure here is a list
 *   redirector_metabox_begin
 *   redirector_metabox_end
 *   redirector_types
 *   redirector_uninstall
+
+= How can I use the Redirector plugin for other post types
+See this gist https://gist.github.com/Horttcore/6412688
 
 = I've found a bug, what to do? =
 *   Please give me a shout over github ( https://github.com/Horttcore/Redirector )
