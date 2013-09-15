@@ -56,6 +56,10 @@ See this gist https://gist.github.com/Horttcore/6412688
 
 == Changelog ==
 
+2.0.3
+*   Added more arguements to the hooks
+*   Added README.md
+
 2.0.2
 *   Filter 'redirector_status' added
 *   Uninstall routine activated

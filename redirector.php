@@ -3,7 +3,7 @@
 Plugin Name: Redirector
 Plugin URL: http://horttcore.de/plugin/redirector
 Description: Redirect any page to an internal or external URL
-Version: 2.0.2
+Version: 2.0.3
 Author: Ralf Hortt
 Author URL: http://horttcore.de/
 */
@@ -199,7 +199,7 @@ class Redirector {
 			<label for="redirector_tree"><?php _e( 'Redirect to:','redirector' ); ?></label><br />
 			<select id="redirector_tree" name="redirector">
 				<option value=""><?php _e( 'No redirection','redirector' ); ?></option>
-				<?php echo apply_filters( 'redirector_dropdown', walk_page_dropdown_tree( get_pages(array( 'depth' => 0)), '0', array( 'depth' => 0, 'child_of' => 0,'selected' => $redirect_id ) ) ); ?>
+				<?php echo apply_filters( 'redirector_dropdown', walk_page_dropdown_tree( get_pages(array( 'depth' => 0)), '0', array( 'depth' => 0, 'child_of' => 0,'selected' => $redirect_id ) ), $redirect_id ); ?>
 			</select>
 		</p>
 
@@ -226,7 +226,7 @@ class Redirector {
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
 			return;
 
-		if ( !isset( $_POST['redirector_nonce'] ) || !wp_verify_nonce( $_POST['redirector_nonce'], 'redirector' ) )
+		if ( !isset($_POST['redirector_nonce']) || !wp_verify_nonce( $_POST['redirector_nonce'], 'redirector' ) )
 			return;
 
 		if ( $_POST['redirect_type'] ) :
@@ -263,6 +263,8 @@ class Redirector {
 				$redirect_url = str_replace( 'http:', 'https:', get_permalink($post->ID) );
 			elseif ( '' != $redirect ) :
 				$redirect_url = $redirect;
+			else :
+				$redirect_url = FALSE;
 			endif;
 
 			if ( ( isset( $redirect_url ) && 'https' != $redirect ) || ( 'https' == $redirect && 'HTTP/' == substr($_SERVER['SERVER_PROTOCOL'], 0, 5) ) ) :
@@ -270,7 +272,7 @@ class Redirector {
 				if ( $_SERVER['QUERY_STRING'] )
 					$redirect_url .= '?' . $_SERVER['QUERY_STRING'];
 
-				wp_redirect( apply_filters( 'redirector_redirect', $redirect_url, $redirect ) );
+				wp_redirect( apply_filters( 'redirector_redirect', $redirect_url, $redirect, $post ) );
 				header( apply_filters( 'redirector_status', 'Status: 302' ) );
 				exit;
 			endif;
@@ -300,5 +302,4 @@ class Redirector {
 
 }
 
-$Redirector = new Redirector();
-?>
+new Redirector();
