@@ -1,64 +1,111 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Redirector v1.0.6\n"
+"Project-Id-Version: Redirector v3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2012-05-06 20:14-0300\n"
+"PO-Revision-Date: 2014-06-29 18:52:45+0000\n"
 "Last-Translator: admin <an@horttcore.de>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
-"X-Textdomain-Support: yes\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
 
+#: classes/class.redirector.admin.php:80
 #@ redirector
-#: redirector.php:84
 msgid "Redirect"
 msgstr "Redirecionar"
 
+#: classes/class.redirector.admin.php:326
 #@ redirector
-#: redirector.php:195
-msgid "Redirect to:"
-msgstr "Redirecionar para:"
-
-#@ redirector
-#: redirector.php:197
-msgid "No redirection"
-msgstr "Não Redirecionar"
-
-#@ redirector
-#: redirector.php:186
 msgid "None"
 msgstr "Nenhum"
 
+#: classes/class.redirector.admin.php:361
 #@ redirector
-#: redirector.php:203
 msgid "URL:"
 msgstr "URL:"
 
-#@ redirector
-#: redirector.php:187
-msgid "Redirect to Page"
-msgstr "Redirecionar para página"
+#: classes/class.redirector.admin.php:165
+#: classes/class.redirector.admin.php:201
+#@ default
+msgid "Title"
+msgstr ""
 
-#@ redirector
-#: redirector.php:188
-msgid "Redirect to Website"
-msgstr "Redirecionar para o website"
+#: classes/class.redirector.admin.php:166
+#: classes/class.redirector.admin.php:202
+#@ default
+msgid "Type"
+msgstr ""
 
+#: classes/class.redirector.admin.php:175
 #@ redirector
-#: redirector.php:189
-msgid "Redirect to First Child"
-msgstr "Redirecionar para página filho"
+msgid "( No title )"
+msgstr ""
 
+#: classes/class.redirector.admin.php:190
+#: classes/class.redirector.admin.php:344
 #@ redirector
-#: redirector.php:190
-msgid "Redirect to HTTPS"
-msgstr "Redirecionar para HTTPS"
+msgid "Select"
+msgstr ""
+
+#: classes/class.redirector.admin.php:332
+#@ redirector
+msgid "Post object"
+msgstr ""
+
+#: classes/class.redirector.admin.php:344
+#@ redirector
+msgid "Select redirection"
+msgstr ""
+
+#: classes/class.redirector.admin.php:356
+#@ redirector
+msgid "Website"
+msgstr ""
+
+#: classes/class.redirector.admin.php:373
+#@ redirector
+msgid "First child"
+msgstr ""
+
+#: classes/class.redirector.admin.php:381
+#@ redirector
+msgid "No child"
+msgstr ""
+
+#: classes/class.redirector.admin.php:390
+#@ redirector
+msgid "SSL"
+msgstr ""
+
+#: classes/class.redirector.admin.php:424
+#@ default
+msgid "Search"
+msgstr ""
+
+#: classes/class.redirector.admin.php:461
+#@ redirector
+msgid "No recent posts"
+msgstr ""
+
+#: classes/class.redirector.admin.php:465
+#@ redirector
+msgid "Most recent posts"
+msgstr ""
+
+#: classes/class.redirector.admin.php:567
+#, php-format
+#@ redirector
+msgid "Search Result for „%s“"
+msgstr ""
 

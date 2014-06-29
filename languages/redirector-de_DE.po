@@ -1,15 +1,16 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Redirector v1.0.6\n"
+"Project-Id-Version: Redirector v3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-03-18 18:53+0100\n"
+"PO-Revision-Date: 2014-06-29 18:53:17+0000\n"
 "Last-Translator: admin <an@horttcore.de>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -19,48 +20,92 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: redirector.php:84
+#: classes/class.redirector.admin.php:80
 #@ redirector
 msgid "Redirect"
 msgstr "Weiterleitung"
 
-#: redirector.php:195
-#@ redirector
-msgid "Redirect to:"
-msgstr "Weiterleiten zu:"
-
-#: redirector.php:197
-#@ redirector
-msgid "No redirection"
-msgstr "Keine Weiterleitung"
-
-#: redirector.php:186
+#: classes/class.redirector.admin.php:326
 #@ redirector
 msgid "None"
 msgstr "Keine"
 
-#: redirector.php:203
+#: classes/class.redirector.admin.php:361
 #@ redirector
 msgid "URL:"
 msgstr "URL:"
 
-#: redirector.php:187
-#@ redirector
-msgid "Redirect to Page"
-msgstr "Weiterleiten zu Seite"
+#: classes/class.redirector.admin.php:165
+#: classes/class.redirector.admin.php:201
+#@ default
+msgid "Title"
+msgstr ""
 
-#: redirector.php:188
-#@ redirector
-msgid "Redirect to Website"
-msgstr "Weiterleiten zu URL"
+#: classes/class.redirector.admin.php:166
+#: classes/class.redirector.admin.php:202
+#@ default
+msgid "Type"
+msgstr ""
 
-#: redirector.php:189
+#: classes/class.redirector.admin.php:175
 #@ redirector
-msgid "Redirect to First Child"
-msgstr "Zur ersten Unterseite weiterleiten"
+msgid "( No title )"
+msgstr "(Kein Titel)"
 
-#: redirector.php:190
+#: classes/class.redirector.admin.php:190
+#: classes/class.redirector.admin.php:344
 #@ redirector
-msgid "Redirect to HTTPS"
-msgstr "Auf HTTPS umleiten"
+msgid "Select"
+msgstr "Auswahl"
+
+#: classes/class.redirector.admin.php:332
+#@ redirector
+msgid "Post object"
+msgstr "Inhalt"
+
+#: classes/class.redirector.admin.php:344
+#@ redirector
+msgid "Select redirection"
+msgstr "Weiterleitung auswählen"
+
+#: classes/class.redirector.admin.php:356
+#@ redirector
+msgid "Website"
+msgstr "Webseite"
+
+#: classes/class.redirector.admin.php:373
+#@ redirector
+msgid "First child"
+msgstr "Erstes Kindelement"
+
+#: classes/class.redirector.admin.php:381
+#@ redirector
+msgid "No child"
+msgstr "Kein Kindelement"
+
+#: classes/class.redirector.admin.php:390
+#@ redirector
+msgid "SSL"
+msgstr "SSL"
+
+#: classes/class.redirector.admin.php:424
+#@ default
+msgid "Search"
+msgstr ""
+
+#: classes/class.redirector.admin.php:461
+#@ redirector
+msgid "No recent posts"
+msgstr "Keine Elemente"
+
+#: classes/class.redirector.admin.php:465
+#@ redirector
+msgid "Most recent posts"
+msgstr "Neuste Inhalte"
+
+#: classes/class.redirector.admin.php:567
+#, php-format
+#@ redirector
+msgid "Search Result for „%s“"
+msgstr "Suchergebnis für „%s“"
 
