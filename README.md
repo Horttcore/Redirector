@@ -44,20 +44,45 @@ Sure here is a list
 Please use the github to report bugs or add feature requests!
 https://github.com/Horttcore/Redirector
 
-### Are there any actions I can hook on?
-
-Sure here is a list
-
-* redirector_metabox_begin
-* redirector_metabox_end
-* redirector_types
-* redirector_uninstall
-
 ### I've found a bug, what to do?
 
 * Please give me a shout over github ( https://github.com/Horttcore/Redirector )
 
+## Hooks
+
+### Actions
+
+* `redirector_uninstall` - Runs on plugin deinstall
+* `redirector_metabox_begin` - Begin redirector meta box
+* `redirector_metabox_end` - End redirector meta box
+* `redirector-modal-search-begin` Begin redirector modal
+* `redirector-modal-search-end` End redirector modal
+
+### Filters
+
+* `redirector-redirect-url` - Alter the query string that is appended to redirect url
+* `redirector-status-code` - Redirect status code; default 301
+* `redirector-recent-posts` - Alter redirector recent posts query
+* `redirector-search-query` - Alter redirector search query
+* `redirector-meta` - Alter Redirector meta save
+
 ## Changelog
+
+### 3.0.0
+
+* Added: Search post object for post redirect type
+* Added: Redirect preview
+* Added action: `redirector-update`
+* Added action: `redirector-modal-search-begin`
+* Added action: `redirector-modal-search-end`
+* Added filter: `redirector-recent-posts`
+* Added filter: `redirector-redirect-url`
+* Added filter: `redirector-status-code`
+* Added filter: `redirector-meta`
+* Enhancement: New Redirector UI
+* Removed Filter: `redirector_redirect`
+* Removed Filter: `redirector_status`
+* Removed Filter: `redirector_types`
 
 ### 2.0.3
 
