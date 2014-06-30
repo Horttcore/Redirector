@@ -5,43 +5,47 @@ Tags: redirect, page
 Requires at least: 3.3
 Tested up to: 3.6
 Stable tag: 3.0.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl-3.0
 
 Redirect posts / pages / custom post types
 
 == Description ==
 
-With this Plugin you can redirect a page in your WordPress installation to any other URL, to a page in your WordPress installation, to the first child page or to https.
-
-With Version
+Redirect posts, pages or any custom post type to a different url.
 
 == Installation ==
 
-*   Put the plugin file in your plugin directory and activate it in your WP backend.
-*   Go to edit a page
-*   Scroll down to 'Redirector' meta box
-*   Select a WordPress page of you installation or enter a valid URL or select the 'first child page'
+* Put the plugin file in your plugin directory and activate it in your WP backend.
+* Go to edit a page
+* Scroll down to 'Redirector' meta box
+* Select a WordPress page of you installation or enter a valid URL or select the 'first child page'
 
 == Screenshots ==
 
-1. Screenshot of the Meta box in the content
-2. Screenshot of the Meta box in the sidebar
+1. Meta box - No redirection
+2. Meta box - Select post ( any post type )
+3. Modal box - Select post ( any post type ) with most recent posts
+4. Modal box - Search post ( any post type )
+5. Meta box - Selected post ( any post type )
+6. Meta box - Custom URL
+7. Meta box - First child element
+8. Meta box - SSL
 
 == Frequently Asked Questions ==
 
-= There is no redirect box when I create a new page! =
-You have to save it once to get access to the redirecor settings. Sorry for that!
+= Where can I get support or report bugs? =
 
-= Are there any filters I can use? =
-Sure here is a list
-1. redirector_dropdown
-1. redirector_url
-1. redirector_redirect
+Please use the [github](https://github.com/Horttcore/Redirector) to report bugs or add feature requests!
+
+= How can I activate Redirector for other post types beside pages? =
+
+Simple add the post type support for it via `add_post_type_support( 'post', 'redirector' )`
 
 == Hooks ==
 
 = Actions =
+
 * `redirector_uninstall` - Runs on plugin deinstall
 * `redirector_metabox_begin` - Begin redirector meta box
 * `redirector_metabox_end` - End redirector meta box
@@ -49,26 +53,24 @@ Sure here is a list
 * `redirector-modal-search-end` End redirector modal
 
 = Filters =
+
 * `redirector-redirect-url` - Alter the query string that is appended to redirect url
 * `redirector-status-code` - Redirect status code; default 301
 * `redirector-recent-posts` - Alter redirector recent posts query
 * `redirector-search-query` - Alter redirector search query
 * `redirector-meta` - Alter Redirector meta save
 
-= How can I use the Redirector plugin for other post types
-See this gist https://gist.github.com/Horttcore/6412688
+= Update Notice =
 
-= I've found a bug, what to do? =
-*   Please give me a shout over github ( https://github.com/Horttcore/Redirector )
-
-== Upgrade Notice ==
-
-With the update to version 3+ I've changed the database structure.
-If you visit the backend all old entries should be replaced with the new structure.
+In version 3+ I've changed the database handling of storing the post meta data.
+This results in that you have the visit the backend once after updating the plugin.
+The function maybe_update() will handle the transition from the old structure to the newer one.
+There shouldn't be any problem updating the plugin, if so please contact me!
 
 == Changelog ==
 
 = 3.0.0 =
+
 * Added: Search post object for post redirect type
 * Added: Redirect preview
 * Added action: `redirector-update`
@@ -84,20 +86,24 @@ If you visit the backend all old entries should be replaced with the new structu
 * Removed Filter: `redirector_types`
 
 = 2.0.3 =
+
 * Added more arguements to the hooks
 * Added README.md
 
 = 2.0.2 =
+
 * Filter 'redirector_status' added
 * Uninstall routine activated
 * Code readability increased
 
 = 2.0.1 =
+
 * Enhancement: Cleanup
 * Fix: Minor typos
 * Fix: Metabox is displayed correctly on new post
 
 = 2.0 =
+
 * Core function rewritten
 * Updated JS/CSS
 * Fully extendable with filters and actions
@@ -106,9 +112,11 @@ If you visit the backend all old entries should be replaced with the new structu
 * Moved files into folders
 
 = 1.2 =
+
 * Moved the code into class
 
 = 1.1 =
+
 * Proper multilanguage support
 * CSS moved to redirector.css
 * JS moved to redirector.js

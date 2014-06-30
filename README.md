@@ -1,17 +1,6 @@
 # Redirector
 
-Redirect a page to an URL
-
-## Description
-
-With this Plugin you can redirect a page in your WordPress installation to any other URL, to a page in your WordPress installation, to the first child page or to https.
-
-## !!! WARNING !!! ##
-
-Some users reported that during the update to 2.0 all redirects where deleted before,
-I removed the plugin uninstall hook for now and investigate this bug. I've updated the SVN without a version bump.
-
-Please do a backup of your db before you update the plugin!
+Redirect posts, pages or any custom post type to a different url.
 
 ## Installation
 
@@ -22,31 +11,39 @@ Please do a backup of your db before you update the plugin!
 
 ## Screenshots
 
-1. Screenshot of the Meta box in the content
-2. Screenshot of the Meta box in the sidebar
+###Meta box - No redirection
+[![Meta box - No redirection](https://raw.github.com/Horttcore/redirector/master/screenshot-1.png)](https://raw.github.com/Horttcore/redirector/master/screenshot-1.png)
+
+### Meta box - Select post ( any post type )
+[![Meta box - Select post ( any post type )](https://raw.github.com/Horttcore/redirector/master/screenshot-2.png)](https://raw.github.com/Horttcore/redirector/master/screenshot-2.png)
+
+### Modal box - Select post ( any post type ) with most recent posts
+[![Modal box - Select post ( any post type ) with most recent posts](https://raw.github.com/Horttcore/redirector/master/screenshot-3.png)](https://raw.github.com/Horttcore/redirector/master/screenshot-3.png)
+
+### Modal box - Search post ( any post type )
+[![Modal box - Search post ( any post type )](https://raw.github.com/Horttcore/redirector/master/screenshot-4.png)](https://raw.github.com/Horttcore/redirector/master/screenshot-4.png)
+
+### Meta box - Selected post ( any post type )
+[![Meta box - Selected post ( any post type )](https://raw.github.com/Horttcore/redirector/master/screenshot-5.png)](https://raw.github.com/Horttcore/redirector/master/screenshot-5.png)
+
+### Meta box - Custom URL
+[![Meta box - Custom URL](https://raw.github.com/Horttcore/redirector/master/screenshot-6.png)](https://raw.github.com/Horttcore/redirector/master/screenshot-6.png)
+
+### Meta box - First child element
+[![Meta box - First child element](https://raw.github.com/Horttcore/redirector/master/screenshot-7.png)](https://raw.github.com/Horttcore/redirector/master/screenshot-7.png)
+
+### Meta box - SSL
+[![Meta box - SSL](https://raw.github.com/Horttcore/redirector/master/screenshot-8.png)](https://raw.github.com/Horttcore/redirector/master/screenshot-8.png)
 
 ## Frequently Asked Questions
 
-### There is no redirect box when I create a new page!
-
-You have to save it once to get access to the redirecor settings. Sorry for that!
-
-### Are there any filters I can use?
-
-Sure here is a list
-
-1. redirector_dropdown
-1. redirector_url
-1. redirector_redirect
-
 ### Where can I get support or report bugs?
 
-Please use the github to report bugs or add feature requests!
-https://github.com/Horttcore/Redirector
+Please use the [github](https://github.com/Horttcore/Redirector) to report bugs or add feature requests!
 
-### I've found a bug, what to do?
+### How can I activate Redirector for other post types beside pages?
 
-* Please give me a shout over github ( https://github.com/Horttcore/Redirector )
+Simple add the post type support for it via `add_post_type_support( 'post', 'redirector' )`
 
 ## Hooks
 
@@ -65,6 +62,13 @@ https://github.com/Horttcore/Redirector
 * `redirector-recent-posts` - Alter redirector recent posts query
 * `redirector-search-query` - Alter redirector search query
 * `redirector-meta` - Alter Redirector meta save
+
+### Update Notice
+
+In version 3+ I've changed the database handling of storing the post meta data.
+This results in that you have the visit the backend once after updating the plugin.
+The function maybe_update() will handle the transition from the old structure to the newer one.
+There shouldn't be any problem updating the plugin, if so please contact me!
 
 ## Changelog
 
