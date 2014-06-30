@@ -13,7 +13,6 @@ endif;
 /**
  * Redirector Admin Class
  *
- *
  * @package Redirector
  * @since 3.0.0
  * @author Ralf Hortt
