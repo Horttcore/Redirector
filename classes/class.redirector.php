@@ -17,7 +17,7 @@ endif;
  * @since v3.0.0
  * @author Ralf Hortt
  **/
-class Redirector {
+final class Redirector {
 
 
 
@@ -32,9 +32,33 @@ class Redirector {
 	{
 
 		add_action( 'template_redirect', array( $this, 'template_redirect' ) );
+		add_action( 'cachify_skip_cache', array( $this, 'skip_cachify' ) ); // compability for cachify
 		add_post_type_support( 'page', 'redirector' );
 
 	} // end __constructor
+
+
+
+	/**
+	 * Skip Caching
+	 *
+	 * Prevent site from being cached by Cachify
+	 * http://playground.ebiene.de/cachify-wordpress-cache/
+	 *
+	 * @return bool
+	 * @author Ralf Hortt
+	 **/
+	public function skip_cachify()
+	{
+
+		$redirector = get_post_meta( get_the_ID(), '_redirector', TRUE );
+
+		if ( isset( $redirector['type'] ) )
+			return TRUE;
+		else
+			return FALSE;
+
+	} // end skip_cachify
 
 
 
@@ -44,6 +68,7 @@ class Redirector {
 	 * @access public
 	 * @since v3.0.0
 	 * @author Ralf Hortt
+	 * @TODO Append query string if redirected
 	 **/
 	public function template_redirect()
 	{
@@ -57,7 +82,7 @@ class Redirector {
 		$redirect_url = FALSE;
 
 		// Exit if none redirect type is set
-		if ( !isset( $redirect['type'] ) )
+		if ( !isset( $redirect['type'] ) || '' == $redirect['type'] )
 			return;
 
 		// First child
@@ -89,8 +114,10 @@ class Redirector {
 		endif;
 
 		// Exit if no redirect url is set
-		if ( FALSE === $redirect_url )
+		if ( FALSE === $redirect_url ) :
+			delete_post_meta( get_the_ID(), '_redirector' );
 			return;
+		endif;
 
 		// Append query string
 		/* if ( $_SERVER['QUERY_STRING'] )

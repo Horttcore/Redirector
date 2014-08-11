@@ -4,7 +4,7 @@ Donate link: http://www.horttcore.de
 Tags: redirect, page
 Requires at least: 3.3
 Tested up to: 3.6
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0
 
@@ -68,6 +68,12 @@ The function maybe_update() will handle the transition from the old structure to
 There shouldn't be any problem updating the plugin, if so please contact me!
 
 == Changelog ==
+
+= 3.0.1 =
+
+* Fix: Checked checkbox for no redirection
+* Fix: Prevent empty redirects
+* Fix: Compability with Cachify
 
 = 3.0.0 =
 

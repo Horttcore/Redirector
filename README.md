@@ -72,6 +72,12 @@ There shouldn't be any problem updating the plugin, if so please contact me!
 
 ## Changelog
 
+### 3.0.1
+
+* Fix: Checked checkbox for no redirection
+* Fix: Prevent empty redirects
+* Fix: Compability with Cachify
+
 ### 3.0.0
 
 * Added: Search post object for post redirect type

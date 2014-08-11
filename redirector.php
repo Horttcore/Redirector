@@ -3,7 +3,7 @@
 Plugin Name: Redirector
 Plugin URL: http://horttcore.de/plugin/redirector
 Description: Redirect any page to an internal or external URL
-Version: 3.0.0
+Version: 3.0.1
 Author: Ralf Hortt
 Author URL: http://horttcore.de/
 */

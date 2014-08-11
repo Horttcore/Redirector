@@ -14,10 +14,10 @@ endif;
  * Redirector Admin Class
  *
  * @package Redirector
- * @since 3.0.0
+ * @since 3.0.1
  * @author Ralf Hortt
  */
-class Redirector_Admin {
+final class Redirector_Admin {
 
 
 
@@ -26,7 +26,7 @@ class Redirector_Admin {
 	 *
 	 * @var string
 	 **/
-	protected $version = '3.0.0';
+	protected $version = '3.0.1';
 
 
 
@@ -46,12 +46,11 @@ class Redirector_Admin {
 		add_action( 'admin_print_styles-post.php', array( $this, 'enqueue_style' ) );
 		add_action( 'admin_print_styles-post-new.php', array( $this, 'enqueue_style' ) );
 		add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ) );
+		add_action( 'plugins_loaded', array( $this, 'maybe_update' ) );
 		add_action( 'save_post', array( $this, 'save_post' ) );
 		add_action( 'wp_ajax_redirector-search-posts', array( $this, 'search_posts' ) );
 
 		add_post_type_support( 'page', 'redirector' );
-
-		$this->maybe_update();
 
 	} // end __construct
 
@@ -249,7 +248,7 @@ class Redirector_Admin {
 	 * @since v3.0.0
 	 * @author Ralf Hortt
 	 **/
-	protected function maybe_update()
+	public function maybe_update()
 	{
 
 		$options = get_option( 'redirector' );
@@ -272,7 +271,7 @@ class Redirector_Admin {
 		foreach ( $meta as $m ) :
 
 			// No need to do something
-			if ( is_array( $m->meta_value ) || is_object( $m->meta_value ) )
+			if ( is_serialized( $m->meta_value ) )
 				continue;
 
 			// Post
@@ -311,6 +310,11 @@ class Redirector_Admin {
 
 		endforeach;
 
+		// Cachify compability
+		if ( class_exists( 'Cachify' ) ) :
+			Cachify::flush_total_cache();
+		endif;
+
 		// Update version number
 		update_option( 'redirector', array(
 			'version' => $this->version
@@ -332,7 +336,7 @@ class Redirector_Admin {
 	{
 		$redirect = get_post_meta( $post->ID, '_redirector', TRUE );
 		$redirect_id = ( isset( $redirect['post_id'] ) ) ? $redirect['post_id'] : '';
-		$type = ( $redirect ) ? $redirect['type'] : '';
+		$type = ( isset( $redirect['type'] ) ) ? $redirect['type'] : '';
 
 		wp_nonce_field( 'redirector', 'redirector_nonce' );
 
@@ -340,7 +344,7 @@ class Redirector_Admin {
 
 		<div class="redirector-redirect-type">
 
-			<label><input type="radio" name="redirect-type" value="none" <?php checked( $type, '' ) ?>> <?php _e( 'None', 'redirector' ); ?></label>
+			<label><input type="radio" name="redirect-type" value="" <?php if ( !$redirect ) echo 'checked="checked"' ?>> <?php _e( 'None', 'redirector' ); ?></label>
 
 		</div><!-- .redirector-redirect-type -->
 
@@ -486,7 +490,7 @@ class Redirector_Admin {
 
 		<?php $this->list_posts( $posts );
 
-	}
+	} // end recent_posts
 
 
 
@@ -504,10 +508,10 @@ class Redirector_Admin {
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
 			return;
 
-		if ( !isset($_POST['redirector_nonce']) || !wp_verify_nonce( $_POST['redirector_nonce'], 'redirector' ) )
+		if ( !isset( $_POST['redirector_nonce'] ) || !wp_verify_nonce( $_POST['redirector_nonce'], 'redirector' ) )
 			return;
 
-		if ( '' !== $_POST['redirect-type'] ) :
+		if ( isset( $_POST['redirect-type'] ) && '' != $_POST['redirect-type'] ) :
 
 			$options = array(
 				'type' => sanitize_text_field( $_POST['redirect-type'] ),
@@ -518,22 +522,28 @@ class Redirector_Admin {
 				// Save post id
 				case 'post' :
 
-					$options['post_id'] = intval( $_POST['redirector-post-id'] );
+					if ( '' != $_POST['redirector-post-id'] )
+						$options['post_id'] = intval( $_POST['redirector-post-id'] );
+					else
+						unset( $options['type'] );
 
 					break;
 
 				// Save redirect url
 				case 'url' :
 
-					$options['url'] = sanitize_url( $_POST['redirector-url'] );
+					if ( '' != $_POST['redirector-url'] )
+						$options['url'] = sanitize_url( $_POST['redirector-url'] );
+					else
+						unset( $options['type'] );
 
 					break;
 
 				// Unset redirect if no child exists
 				case 'first-child' :
-					if ( '' == $this->get_first_child_title( $post_id ) )
 
-					$options['type'] = '';
+					if ( '' == $this->get_first_child_title( $post_id ) )
+						unset( $options['type'] );
 
 					break;
 
@@ -541,8 +551,10 @@ class Redirector_Admin {
 
 			$options = apply_filters( 'redirector-meta', $options );
 
-			//die( '<pre>' . print_r( $options, TRUE ) . '</pre>' );
-			update_post_meta( $post_id, '_redirector', $options );
+			if ( isset( $options['type'] ) )
+				update_post_meta( $post_id, '_redirector', $options );
+			else
+				delete_post_meta( $post_id, '_redirector' );
 
 		else :
 
