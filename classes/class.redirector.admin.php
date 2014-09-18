@@ -337,6 +337,7 @@ final class Redirector_Admin {
 		$redirect = get_post_meta( $post->ID, '_redirector', TRUE );
 		$redirect_id = ( isset( $redirect['post_id'] ) ) ? $redirect['post_id'] : '';
 		$type = ( isset( $redirect['type'] ) ) ? $redirect['type'] : '';
+		$status = ( isset( $redirect['status'] ) ) ? $redirect['status'] : '302';
 
 		wp_nonce_field( 'redirector', 'redirector_nonce' );
 
@@ -417,6 +418,36 @@ final class Redirector_Admin {
 			</div>
 
 		</div><!-- .redirector-redirect-type -->
+
+		<?php do_action( 'redirector-redirect-type', $post ); ?>
+
+		<div class="redirector-redirect-status">
+
+			<p>
+				<strong><?php _e( 'Status Code', 'redirector' ); ?></strong>
+
+				<?php
+
+				$stati = apply_filters( 'redirector-redirect-stati', array(
+					'301' => __( '301 Moved Permanently', 'redirector' ),
+					'302' => __( '302 Moved Temporarily / Found', 'redirector' ),
+				) );
+
+				ksort( $stati );
+
+				foreach ( $stati as $value => $label ) :
+
+					?>
+					<div><label><input <?php checked( $value, $status ) ?> type="radio" name="redirect-status" value="<?php echo $value ?>"> <?php echo $label ?></label></div>
+					<?php
+
+				endforeach;
+
+				?>
+			</p>
+
+		</div>
+
 
 		<?php
 
@@ -548,6 +579,8 @@ final class Redirector_Admin {
 					break;
 
 			endswitch;
+
+			$options['status'] = ( 0 === intval( $_POST['redirect-status'] ) ) ? 302 : intval( $_POST['redirect-status'] );
 
 			$options = apply_filters( 'redirector-meta', $options );
 

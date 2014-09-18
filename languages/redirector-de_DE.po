@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Redirector v3.0\n"
+"Project-Id-Version: Redirector v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-06-29 18:53:17+0000\n"
+"PO-Revision-Date: 2014-09-18 10:46:02+0000\n"
 "Last-Translator: admin <an@horttcore.de>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,92 +20,107 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: classes/class.redirector.admin.php:80
+#: classes/class.redirector.admin.php:79
 #@ redirector
 msgid "Redirect"
 msgstr "Weiterleitung"
 
-#: classes/class.redirector.admin.php:326
+#: classes/class.redirector.admin.php:348
 #@ redirector
 msgid "None"
 msgstr "Keine"
 
-#: classes/class.redirector.admin.php:361
+#: classes/class.redirector.admin.php:383
 #@ redirector
 msgid "URL:"
 msgstr "URL:"
 
-#: classes/class.redirector.admin.php:165
-#: classes/class.redirector.admin.php:201
+#: classes/class.redirector.admin.php:170
+#: classes/class.redirector.admin.php:215
 #@ default
 msgid "Title"
 msgstr ""
 
-#: classes/class.redirector.admin.php:166
-#: classes/class.redirector.admin.php:202
+#: classes/class.redirector.admin.php:171
+#: classes/class.redirector.admin.php:216
 #@ default
 msgid "Type"
 msgstr ""
 
-#: classes/class.redirector.admin.php:175
+#: classes/class.redirector.admin.php:181
 #@ redirector
 msgid "( No title )"
 msgstr "(Kein Titel)"
 
-#: classes/class.redirector.admin.php:190
-#: classes/class.redirector.admin.php:344
+#: classes/class.redirector.admin.php:201
+#: classes/class.redirector.admin.php:366
 #@ redirector
 msgid "Select"
 msgstr "Auswahl"
 
-#: classes/class.redirector.admin.php:332
+#: classes/class.redirector.admin.php:354
 #@ redirector
 msgid "Post object"
 msgstr "Inhalt"
 
-#: classes/class.redirector.admin.php:344
+#: classes/class.redirector.admin.php:366
 #@ redirector
 msgid "Select redirection"
 msgstr "Weiterleitung auswählen"
 
-#: classes/class.redirector.admin.php:356
+#: classes/class.redirector.admin.php:378
 #@ redirector
 msgid "Website"
 msgstr "Webseite"
 
-#: classes/class.redirector.admin.php:373
+#: classes/class.redirector.admin.php:395
 #@ redirector
 msgid "First child"
 msgstr "Erstes Kindelement"
 
-#: classes/class.redirector.admin.php:381
+#: classes/class.redirector.admin.php:403
 #@ redirector
 msgid "No child"
 msgstr "Kein Kindelement"
 
-#: classes/class.redirector.admin.php:390
+#: classes/class.redirector.admin.php:412
 #@ redirector
 msgid "SSL"
 msgstr "SSL"
 
-#: classes/class.redirector.admin.php:424
+#: classes/class.redirector.admin.php:477
 #@ default
 msgid "Search"
 msgstr ""
 
-#: classes/class.redirector.admin.php:461
+#: classes/class.redirector.admin.php:516
 #@ redirector
 msgid "No recent posts"
 msgstr "Keine Elemente"
 
-#: classes/class.redirector.admin.php:465
+#: classes/class.redirector.admin.php:520
 #@ redirector
 msgid "Most recent posts"
 msgstr "Neuste Inhalte"
 
-#: classes/class.redirector.admin.php:567
+#: classes/class.redirector.admin.php:634
 #, php-format
 #@ redirector
 msgid "Search Result for „%s“"
 msgstr "Suchergebnis für „%s“"
+
+#: classes/class.redirector.admin.php:427
+#@ redirector
+msgid "Status Code"
+msgstr "Status Code"
+
+#: classes/class.redirector.admin.php:432
+#@ redirector
+msgid "301 Moved Permanently"
+msgstr "301 Moved Permanently"
+
+#: classes/class.redirector.admin.php:433
+#@ redirector
+msgid "302 Moved Temporarily / Found"
+msgstr "302 Moved Temporarily / Found"
 

@@ -4,7 +4,7 @@ Donate link: http://www.horttcore.de
 Tags: redirect, page
 Requires at least: 3.3
 Tested up to: 3.6
-Stable tag: 3.0.1
+Stable tag: 3.1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0
 
@@ -48,6 +48,7 @@ Simple add the post type support for it via `add_post_type_support( 'post', 'red
 
 * `redirector_uninstall` - Runs on plugin deinstall
 * `redirector_metabox_begin` - Begin redirector meta box
+* `redirector-redirect-type` - After redirect types
 * `redirector_metabox_end` - End redirector meta box
 * `redirector-modal-search-begin` Begin redirector modal
 * `redirector-modal-search-end` End redirector modal
@@ -55,12 +56,15 @@ Simple add the post type support for it via `add_post_type_support( 'post', 'red
 = Filters =
 
 * `redirector-redirect-url` - Alter the query string that is appended to redirect url
+* `redirector-redirect-stati` - Add other status codes
 * `redirector-status-code` - Redirect status code; default 301
 * `redirector-recent-posts` - Alter redirector recent posts query
 * `redirector-search-query` - Alter redirector search query
 * `redirector-meta` - Alter Redirector meta save
 
-= Update Notice =
+== Update Notice ==
+
+= v1.x - v2.x to v3.x =
 
 In version 3+ I've changed the database handling of storing the post meta data.
 This results in that you have the visit the backend once after updating the plugin.
@@ -68,6 +72,14 @@ The function maybe_update() will handle the transition from the old structure to
 There shouldn't be any problem updating the plugin, if so please contact me!
 
 == Changelog ==
+
+= 3.1.0 =
+
+* Added: Redirect status code
+* Added action: `redirector-redirect-type`
+* Added filter: `redirector-redirect-stati`
+* Changed: Parameter added to `redirector-status-code` filter
+* Changed: Template redirect priority parameter, this might fix some problems with cache plugins
 
 = 3.0.1 =
 
