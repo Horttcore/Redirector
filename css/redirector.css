@@ -19,6 +19,10 @@
 	margin: 0 0 10px;
 }
 
+.redirector-redirect-status > div {
+	margin: 0 0 5px;
+}
+
 /* Modal */
 #redirector-post-search {
 	display: none;

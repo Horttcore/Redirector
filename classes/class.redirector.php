@@ -31,7 +31,7 @@ final class Redirector {
 	public function __construct()
 	{
 
-		add_action( 'template_redirect', array( $this, 'template_redirect' ) );
+		add_action( 'template_redirect', array( $this, 'template_redirect' ), 1 );
 		add_action( 'cachify_skip_cache', array( $this, 'skip_cachify' ) ); // compability for cachify
 		add_post_type_support( 'page', 'redirector' );
 
@@ -131,7 +131,7 @@ final class Redirector {
 		if ( 'https' == $redirect['type'] && is_ssl() )
 			return;
 
-		wp_redirect( apply_filters( 'redirector-redirect-url', $redirect_url, $redirect, $post ), apply_filters( 'redirector-status-code', 301 ) );
+		wp_redirect( apply_filters( 'redirector-redirect-url', $redirect_url, $redirect, $post ), apply_filters( 'redirector-status-code', $redirect['status'], $redirect ) );
 
 	} // end template_redirect
 

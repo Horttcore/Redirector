@@ -8,6 +8,7 @@ jQuery(document).ready(function(){
 			Plugin.body = jQuery('body');
 			Plugin.radioButtons = jQuery('input[name="redirect-type"]');
 			Plugin.radioOptions = jQuery('.redirector-redirect-type > div');
+			Plugin.status = jQuery('.redirector-redirect-status');
 
 			Plugin.radioButtonChecked = false;
 			Plugin.radioOptionActive = false;
@@ -31,9 +32,11 @@ jQuery(document).ready(function(){
 
 			// Toggle options
 			Plugin.toggleOptions();
+			Plugin.toggleStatus();
 			Plugin.radioButtons.change(function(){
 
 				Plugin.toggleOptions( jQuery(this ) );
+				Plugin.toggleStatus( jQuery(this) );
 
 			});
 
@@ -50,15 +53,15 @@ jQuery(document).ready(function(){
 			Plugin.body.on( 'click', '.select-redirector-post-id', function(e){
 				e.preventDefault();
 				Plugin.redirectID.val( jQuery(this).data('id') );
-				Plugin.redirectIDPreview.html( jQuery(this).parents('tr:first').find('.item-title a').clone() )
+				Plugin.redirectIDPreview.html( jQuery(this).parents('tr:first').find('.item-title a').clone() );
 				jQuery('.tb-close-icon').trigger('click');
 				Plugin.resetSearch();
 			});
 
 			// URL preview
 			Plugin.url.keyup(function(){
-				Plugin.urlPreview.text( Plugin.url.val() )
-				Plugin.urlPreview.prop( 'href', Plugin.url.val() )
+				Plugin.urlPreview.text( Plugin.url.val() );
+				Plugin.urlPreview.prop( 'href', Plugin.url.val() );
 			});
 
 			// Search Post
@@ -77,7 +80,7 @@ jQuery(document).ready(function(){
 
 			}).on( 'change', '#redirector-search', function(e){
 
-				if ( '' == jQuery(this).val() )
+				if ( '' === jQuery(this).val() )
 					Plugin.resetSearch();
 
 			});
@@ -115,10 +118,10 @@ jQuery(document).ready(function(){
 			var search = jQuery('#redirector-search'),
 				button = jQuery('#redirector-search-post'),
 				recent = jQuery('#redirector-recent-posts'),
-				result = jQuery('#redirector-search-result')
+				result = jQuery('#redirector-search-result'),
 				spinner = false;
 
-			if ( '' != search.val() ) {
+			if ( '' !== search.val() ) {
 
 				// Add spinner
 				button.after('<span class="spinner" id="redirector-spinner"></span>');
@@ -155,7 +158,7 @@ jQuery(document).ready(function(){
 				width: parseInt( Plugin.thickboxWindow.width() ) - parseInt( Plugin.thickboxContent.css('paddingLeft') ) - parseInt( Plugin.thickboxContent.css('paddingRight') ),
 				height: parseInt( Plugin.thickboxWindow.height() ) - parseInt( Plugin.thickboxTitle.height() ) - parseInt( Plugin.thickboxContent.css('paddingBottom') ) - parseInt( Plugin.thickboxContent.css('paddingBottom') ),
 				overflow: 'scroll'
-			}
+			};
 
 			Plugin.thickboxContent.css( css );
 
@@ -170,10 +173,19 @@ jQuery(document).ready(function(){
 			Plugin.radioOptions.hide();
 			Plugin.radioOptionActive.show();
 
+		},
+
+		toggleStatus:function( obj ) {
+
+			if ( '' === Plugin.radioButtons.filter(':checked').val() )
+				Plugin.status.hide();
+			else
+				Plugin.status.show();
+
 		}
 
 
-	}
+	};
 
 	Plugin.init();
 
