@@ -133,6 +133,8 @@ final class Redirector {
 
 		wp_redirect( apply_filters( 'redirector-redirect-url', $redirect_url, $redirect, $post ), apply_filters( 'redirector-status-code', $redirect['status'], $redirect ) );
 
+		exit;
+		
 	} // end template_redirect
 
 
