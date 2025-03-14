@@ -11,7 +11,7 @@ Redirect posts, pages or any custom post type to a different url.
 
 ## Screenshots
 
-###Meta box - No redirection
+### Meta box - No redirection
 [![Meta box - No redirection](https://raw.github.com/Horttcore/redirector/master/screenshot-1.png)](https://raw.github.com/Horttcore/redirector/master/screenshot-1.png)
 
 ### Meta box - Select post ( any post type )
